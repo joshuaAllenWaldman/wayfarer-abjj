@@ -1,47 +1,42 @@
 import React from 'react';
-import CityList from '../components/CityList'
+import CityList from '../components/CityList';
+import CityShow from '../components/CityShow';
+import NewPostPage from './NewPostPage'
+
 
 class CityPage extends React.Component {
   state = {
     cityData: [],
+    currentCity: ''
   }
   
   componentDidMount () {
     fetch('https://abjj-wayfarer-api.herokuapp.com/city/')
       .then((res) => res.json())
       .then((jsonData) => {
+        console.log(jsonData)
         this.setState({cityData: jsonData})
+        this.setState({currentCity: this.state.cityData[0]})
+        console.log(this.state.currentCity)
       })
       .catch((err) => console.log(err))
   }
 
+  // updatesCurrentCity = () => {
+  //   this.setState
+  // }
+  
 
   render () {
     return (
+      <>
       <div className="row">
-        <CityList cities={this.state.cityData} />
-        <div className="city-show col">
+        <CityList cities={this.state.cityData} currentCity={this.state.currentCity}/>
+        <CityShow cities={this.state.cityData} currentCity={this.state.currentCity} />
+      </div>
+        <NewPostPage currentCity={this.state.currentCity}/>
 
-          <div className="city-header row">
-            <div className="city-title">
-              <h1>CityName</h1>
-              <h2>Country</h2>  
-            </div>
-            <div className="city-pic">
-              <img src="" alt=""/>
-            </div>
-          </div>
-
-          <div className="post-container">
-            <h2>Posts</h2>
-            <ul>
-              <li>POST</li>
-              <li>POST</li>
-            </ul>
-          </div>
-        </div>
-
-    </div>
+      </>
     )
   }
 }
