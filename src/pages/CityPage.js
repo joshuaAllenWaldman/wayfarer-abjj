@@ -1,22 +1,26 @@
 import React from 'react';
+import CityList from '../components/CityList'
 
 class CityPage extends React.Component {
+  state = {
+    cityData: [],
+  }
+  
+  componentDidMount () {
+    fetch('https://abjj-wayfarer-api.herokuapp.com/city/')
+      .then((res) => res.json())
+      .then((jsonData) => {
+        this.setState({cityData: jsonData})
+      })
+      .catch((err) => console.log(err))
+  }
 
-  //make api call for cities, should also get the comment id's with it. 
 
   render () {
     return (
-      <div className="container">
-        <div className="cities-list">
-          <h1>cities</h1>
-          <ul>
-            <li>City</li>
-            <li>City</li>
-            <li>City</li>
-            <li>City</li>
-          </ul>
-        </div>
-        <div className="city-show">
+      <div className="row">
+        <CityList cities={this.state.cityData} />
+        <div className="city-show col">
 
           <div className="city-header row">
             <div className="city-title">
