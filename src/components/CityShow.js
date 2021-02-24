@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom'
-import NewPostPage from '../pages/NewPostPage';
-
 const CityShow = (props) => {
 
 

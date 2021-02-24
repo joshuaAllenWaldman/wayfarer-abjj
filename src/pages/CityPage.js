@@ -1,7 +1,7 @@
 import React from 'react';
 import CityList from '../components/CityList';
 import CityShow from '../components/CityShow';
-import NewPostPage from './NewPostPage'
+import NewPostForm from '../components/NewPostForm'
 
 
 class CityPage extends React.Component {
@@ -34,7 +34,7 @@ class CityPage extends React.Component {
         <CityList cities={this.state.cityData} currentCity={this.state.currentCity}/>
         <CityShow cities={this.state.cityData} currentCity={this.state.currentCity} />
       </div>
-        <NewPostPage currentCity={this.state.currentCity}/>
+        <NewPostForm currentCity={this.state.currentCity}/>
 
       </>
     )
