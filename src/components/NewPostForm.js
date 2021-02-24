@@ -13,8 +13,8 @@ class NewPostForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log(`City: ${this.state.city}`)
-    console.log(this.state)
+    // console.log(`City: ${this.state.city}`)
+    // console.log(this.state)
     fetch(`https://abjj-wayfarer-api.herokuapp.com/cities/`)
     .then((res) => res.json())
       .then((jsonData) => {
@@ -30,7 +30,7 @@ class NewPostForm extends React.Component {
     })
   }
 
-  componentDidUpdate() {console.log(this.state)}
+  componentDidUpdate() {}
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -49,11 +49,11 @@ class NewPostForm extends React.Component {
       body: JSON.stringify(requestBody)
     })
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       return response.json()
     })
     .then((jsonData) => {
-      console.log(jsonData)
+      // console.log(jsonData)
     })
     .catch((err) => {throw err})
   }
