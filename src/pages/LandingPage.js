@@ -1,28 +1,46 @@
+import Topic from '../components/Topic';
+import image1 from '../images/london.jpg';
+import image2 from '../images/san-fran.jpg';
+import image3 from '../images/seattle.jpg';
 
 
 const LandingPage = () => {
   return (
-    <div className="container" >
-      <div className="carousel">
-        <h1>NEED TO BUILD A CAROUSEL HERE</h1>
-      </div>
-      <section className="landing-articles" >
-        <h2>Wayfarer is...</h2>
-        <div className="articles">
-          <article>
-            <h3>Topic</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro voluptate voluptatem id itaque. Eligendi ab non quam blanditiis suscipit dignissimos rem qui veniam. Tenetur, dignissimos ea corporis odit tempore, quia placeat mollitia temporibus minus nihil similique blanditiis atque dolor veniam?</p>
-          </article>
-          <article>
-            <h3>Topic</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro voluptate voluptatem id itaque. Eligendi ab non quam blanditiis suscipit dignissimos rem qui veniam. Tenetur, dignissimos ea corporis odit tempore, quia placeat mollitia temporibus minus nihil similique blanditiis atque dolor veniam?</p>
-          </article>
-          <article>
-            <h3>Topic</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro voluptate voluptatem id itaque. Eligendi ab non quam blanditiis suscipit dignissimos rem qui veniam. Tenetur, dignissimos ea corporis odit tempore, quia placeat mollitia temporibus minus nihil similique blanditiis atque dolor veniam?</p>
-          </article>
+    <div>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-      </section>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src={image1} class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src={image2} class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src={image3} class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div className="container">
+        <div className="heading">
+          <h1>Wayfarer is</h1>
+        </div>
+      </div>
+
+      <Topic />
     </div>
   )
 }
