@@ -42,18 +42,14 @@ class CityPage extends React.Component {
     return (
       <>
         <div className="container-fluid cities">
-            <CityShow cities={
-                this.state.cityData
-              }
-              currentCity={
-                this.state.currentCity
-              }
-              updateCurrentCity={
-                this.updateCurrentCity
-              }/>
+            <CityShow 
+              cities={this.state.cityData}
+              currentCity={this.state.currentCity}
+              updateCurrentCity={this.updateCurrentCity}
+            />
 
         </div>
-          <NewPostForm currentCity={this.state.currentCity}/>
+          {/* <NewPostForm currentCity={this.state.currentCity}/> */}
 
       </>  
     )
