@@ -11,7 +11,7 @@ class CityPage extends React.Component {
   }
   
   componentDidMount () {
-    fetch('https://abjj-wayfarer-api.herokuapp.com/city/')
+    fetch('https://abjj-wayfarer-api.herokuapp.com/cities/')
       .then((res) => res.json())
       .then((jsonData) => {
         console.log(jsonData)
