@@ -1,7 +1,7 @@
 import React from 'react';
 import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import NewPostPage from './NewPostPage';
+import NewPostForm from '../components/NewPostForm'
 
 
 class CityPage extends React.Component {
@@ -143,6 +143,7 @@ class CityPage extends React.Component {
         </div>
 
       </div>
+        <NewPostForm currentCity={this.state.currentCity}/>
 
       </>
     )
