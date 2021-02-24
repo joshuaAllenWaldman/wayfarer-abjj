@@ -1,41 +1,72 @@
 import React from 'react';
+import PostList from './PostList'
+import CityList from './CityList';
 
 
 class CityShow extends React.Component {
   state = {
-    posts: [],
+    posts: []
   }
 
   componentDidMount() {
-    const cityId = this.props.currentCity._id;
-    fetch(`https://abjj-wayfarer-api.herokuapp.com/city/${cityId}/posts`)
+    fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
       .then((res) => res.json())
       .then((jsonData) => {
-      this.setState({posts: jsonData})
-      })
-      .catch((err) => console.log(err))
+        const filteredPosts = jsonData.filter((post) => {
+          return post.city === this.props.currentCity._id
+        })
+        this.setState({posts: filteredPosts})
+    })
+    .catch((err) => console.log(err))
+  }
+
+  updatePosts = () => {
+    console.log('update hit')
+    fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
+      .then((res) => res.json())
+      .then((jsonData) => {
+        const filteredPosts = jsonData.filter((post) => {
+          return post.city === this.props.currentCity._id
+        })
+        this.setState({posts: filteredPosts})
+    })
+    .catch((err) => console.log(err))
   }
 
   render() {
     return (
-      <div className="city-show col">
-        <div className="city-header row">
-          <div className="city-title">
-            <h1>{
-              this.props.currentCity.name
-            }</h1>
+      <>
+        <CityList cities={
+            this.props.cities
+          }
+          currentCity={
+            this.props.currentCity
+          }
+          updateCurrentCity={
+            this.props.updateCurrentCity
+          }
+          updatePosts={this.updatePosts}
+          />
+        <div className="city-show col">
+          <div className="city-header row">
+            <div className="city-title">
+              <h1>{
+                this.props.currentCity.name
+              }</h1>
+            </div>
+            <div className="city-pic">
+              <img src="" alt=""/>
+            </div>
           </div>
-          <div className="city-pic">
-            <img src="" alt=""/>
+          <div className="post-container">
+            <PostList postData={
+              this.state.posts
+            }/>
           </div>
         </div>
-        <div className="post-container">
-          <h2>Posts</h2>
-          <ul>
-            
-          </ul>
-        </div>
-      </div>
+
+      </>
+
     )
   }
 

@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom'
 
 const CityList = (props) => {
   const cities = props.cities.map((city) => {
-    return <li key={city._id} onClick={()=>{props.updateCurrentCity(city)}}><Link to={'/cities'}> {city.name} </Link></li>
+
+    return <li key={city._id} onClick={()=>{
+      props.updateCurrentCity(city)
+      props.updatePosts();
+      }}
+    
+    ><Link to={'/cities'}> {city.name} </Link></li>
   })
   return (
     <div className="cities-list col">

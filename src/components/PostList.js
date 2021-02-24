@@ -1,7 +1,22 @@
+import PostCard from './PostCard'
 
-const PostList = () => {
+const PostList = (props) => {
+  const posts = props.postData.map((post, index) => {
+    return (
+        <PostCard 
+        postData={props.postData[index]} 
+        key={props.postData[index]._id}
+
+        /> 
+    )
+  })
   return (
-    <div>POST LIST</div>
+    <>
+      <h3>Posts</h3>
+
+      {posts}
+
+    </>
   )
 }
 
