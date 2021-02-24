@@ -25,7 +25,6 @@ class CityShow extends React.Component {
     fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
       .then((res) => res.json())
       .then((jsonData) => {
-        console.log(jsonData)
         const filteredPosts = jsonData.filter((post) => {
           return post.city === this.props.currentCity._id
         })
@@ -47,6 +46,7 @@ class CityShow extends React.Component {
             this.props.updateCurrentCity
           }
           updatePosts={this.updatePosts}
+
           />
         <div className="city-show col">
           <div className="city-header row">
