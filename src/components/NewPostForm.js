@@ -29,7 +29,7 @@ class NewPostForm extends React.Component {
     })
   }
 
-  componentDidUpdate() {console.log(this.state)}
+  componentDidUpdate() {}
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -48,11 +48,11 @@ class NewPostForm extends React.Component {
       body: JSON.stringify(requestBody)
     })
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       return response.json()
     })
     .then((jsonData) => {
-      console.log(jsonData)
+      // console.log(jsonData)
     })
     .catch((err) => {throw err})
   }
