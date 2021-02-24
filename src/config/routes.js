@@ -9,7 +9,7 @@ const routes = (
         <Route exact path='/' component={ LandingPage } />
         <Route path='/login' component={ LoginPage } />
         <Route path='/new-post' component={ NewPostPage } />
-        <Route path='/cities/' component={ CityPage } /> 
+        <Route path='/cities/:cityId' component={ CityPage } /> 
     </Switch>
 )
 
