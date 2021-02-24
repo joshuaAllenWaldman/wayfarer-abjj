@@ -80,48 +80,17 @@ class CityPage extends React.Component {
 
         <div className="col-md-8">
           <div className="container-fluid" id="cities">
-          <p>hello</p>
+
           </div>
+
           <div className="container-fluid" id="city-post">
           <p>hi</p>
           </div>
+
         </div>
+
       </div>
 
-
-
-    //   <div className="container">
-    //     <div className="cities-list">
-    //       <h1>cities</h1>
-    //       <ul>
-    //         <li>City</li>
-    //         <li>City</li>
-    //         <li>City</li>
-    //         <li>City</li>
-    //       </ul>
-    //     </div>
-    //     <div className="city-show">
-
-    //       <div className="city-header row">
-    //         <div className="city-title">
-    //           <h1>CityName</h1>
-    //           <h2>Country</h2>  
-    //         </div>
-    //         <div className="city-pic">
-    //           <img src="" alt=""/>
-    //         </div>
-    //       </div>
-
-    //       <div className="post-container">
-    //         <h2>Posts</h2>
-    //         <ul>
-    //           <li>POST</li>
-    //           <li>POST</li>
-    //         </ul>
-    //       </div>
-    //     </div>
-
-    // </div>
     )
   }
 }
