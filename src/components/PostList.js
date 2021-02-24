@@ -1,7 +1,13 @@
 import PostCard from './PostCard'
 
+function dateSort(a, b) {
+  return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+}
+
 const PostList = (props) => {
-  const posts = props.postData.map((post, index) => {
+  const sortedPosts = props.postData.sort(dateSort)
+  const posts = sortedPosts.map((post, index) => {
+    let createTime = parseInt((new Date (post.createdAt).getTime() /1000).toFixed(0))
     return (
         <PostCard 
         postData={props.postData[index]} 
@@ -10,6 +16,7 @@ const PostList = (props) => {
         /> 
     )
   })
+
   return (
     <>
       <h3>Posts</h3>
