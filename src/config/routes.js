@@ -6,9 +6,9 @@ import LandingPage from '../pages/LandingPage';
 
 const routes = (
     <Switch>
-        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/' component={ LandingPage } />
         <Route path='/login' component={ LoginPage } />
-        <Route path='/new-post' component={NewPostPage} />
+        <Route path='/new-post' component={ NewPostPage } />
         <Route path='/cities/' component={ CityPage } /> 
     </Switch>
 )
