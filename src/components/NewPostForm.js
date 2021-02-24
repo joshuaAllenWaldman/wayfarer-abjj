@@ -13,8 +13,6 @@ class NewPostForm extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(`City: ${this.state.city}`)
-    // console.log(this.state)
     fetch(`https://abjj-wayfarer-api.herokuapp.com/cities/`)
     .then((res) => res.json())
       .then((jsonData) => {
@@ -22,6 +20,7 @@ class NewPostForm extends React.Component {
       })
       .catch((err) => console.log(err))
     .then(() => {this.setState({city: this.props.currentCity._id})})
+    .then(console.log(this.state))
   }
 
   handleChange = (event) => {
@@ -40,7 +39,7 @@ class NewPostForm extends React.Component {
       body: this.state.body
     }
     // console.log(JSON.stringify(this.state.form))
-    fetch('/post/', {
+    fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
       method: 'post',
       // enctype: 'multipart/form-data',
       headers: {
@@ -57,23 +56,6 @@ class NewPostForm extends React.Component {
     })
     .catch((err) => {throw err})
   }
-  //   fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
-  //     method: 'post',
-  //     // enctype: 'multipart/form-data',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(this.state.form)
-  //   })
-  //   .then((response) => {
-  //     console.log(response)
-  //     return response.json()
-  //   })
-  //   .then((jsonData) => {
-  //     console.log(jsonData)
-  //   })
-  //   .catch((err) => {throw err})
-  // }
 
   render() {
     const options = []
