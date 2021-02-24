@@ -108,9 +108,9 @@ class CityPage extends React.Component {
             </div>
           </div>
 
-      <>
+          <>
 
-        <div className="row">
+          <div className="row">
           <CityShow cities={
               this.state.cityData
             }
@@ -121,7 +121,7 @@ class CityPage extends React.Component {
               this.updateCurrentCity
             }/>
         </div>
-        <NewPostPage updateCurrentCity={
+          <NewPostPage updateCurrentCity={
             this.updateCurrentCity
           }
           cities={
@@ -131,7 +131,7 @@ class CityPage extends React.Component {
             this.state.currentCity
           }/>
 
-        <div className="col-md-8">
+          <div className="col-md-8">
           <div className="container-fluid" id="cities">
 
           </div>
@@ -142,9 +142,10 @@ class CityPage extends React.Component {
 
         </div>
 
-      </div>
 
-      </>
+          </>
+        </div>
+      </div>    
     )
   }
 }
