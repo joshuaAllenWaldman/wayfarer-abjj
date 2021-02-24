@@ -1,7 +1,8 @@
 import React from 'react';
 import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import NewPostForm from '../components/NewPostForm'
+import NewPostForm from '../components/NewPostForm';
+import CityList from '../components/CityList';
 
 
 class CityPage extends React.Component {
@@ -39,7 +40,8 @@ class CityPage extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid cities">
+      <>
+        <div className="container-fluid cities">
         <div className="col-6 col-md-4" id="cities-container">
           <span className="cities-card">Cities</span>
 
@@ -108,9 +110,9 @@ class CityPage extends React.Component {
             </div>
           </div>
 
-      <>
 
         <div className="row">
+          <CityList cities={this.state.cityData} />
           <CityShow cities={
               this.state.cityData
             }
@@ -121,15 +123,7 @@ class CityPage extends React.Component {
               this.updateCurrentCity
             }/>
         </div>
-        <NewPostPage updateCurrentCity={
-            this.updateCurrentCity
-          }
-          cities={
-            this.state.cityData
-          }
-          currentCity={
-            this.state.currentCity
-          }/>
+
 
         <div className="col-md-8">
           <div className="container-fluid" id="cities">
@@ -144,8 +138,8 @@ class CityPage extends React.Component {
 
       </div>
         <NewPostForm currentCity={this.state.currentCity}/>
-
-      </>
+      </div>  
+    </>      
     )
   }
 }
