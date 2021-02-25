@@ -34,6 +34,26 @@ class CityShow extends React.Component {
     .catch((err) => console.log(err))
   }
 
+  deletePost = (postId, cityId) => {
+    //FIlters out the deleted post from the post state. but it returns when you refresh the page cause there is no db call
+    fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({_id: postId, city: cityId})
+    }).then((res) => res.json())
+      .then((jsonData) => {
+        console.log(jsonData)
+        const filteredPosts = this.state.posts.filter((post) => {
+        return postId !== post._id
+        });
+        this.setState({
+          posts: filteredPosts
+        }) 
+      })
+  }
+
   render() {
     return (
       <>
@@ -68,13 +88,13 @@ class CityShow extends React.Component {
           </div>
 
           <div className="post-container">
-            <PostList postData={
-              this.state.posts
-            }/>
+            <PostList 
+            postData={this.state.posts}
+            deletePost={this.deletePost}
+            />
           </div>
 
         </div>
-
       </>
 
     )

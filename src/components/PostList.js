@@ -13,6 +13,8 @@ const PostList = (props) => {
         <PostCard 
         postData={props.postData[index]} 
         key={props.postData[index]._id}
+        deletePost={props.deletePost}
+        launchEditForm={props.launchEditForm}
 
         /> 
     )
