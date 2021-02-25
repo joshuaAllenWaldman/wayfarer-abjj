@@ -11,7 +11,8 @@ class PostCard extends React.Component {
       <div className="body">
         <p> {this.props.postData.body} </p>
       </div>
-      <button onClick={() => {this.props.deletePost(this.props.postData._id)}}>Delete!</button>
+      <button onClick={() => this.props.launchEditForm(this.props.postData._id)} >Edit</button>
+      <button onClick={() => {this.props.deletePost(this.props.postData._id, this.props.postData.city)}}>Delete!</button>
     </div>
   )}
 }
