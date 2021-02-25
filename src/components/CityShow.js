@@ -83,7 +83,7 @@ class CityShow extends React.Component {
             </div>
 
             <div className="col city-image">
-              <img src={this.props.cities[0].image} id="main-city-image" alt=""/>
+              {/* <img src={this.props.cities[0].image} id="main-city-image" alt=""/> */}
               <div className="create-button">
               <i className="fas fa-plus-circle" id="plusBtn"></i>
               </div>

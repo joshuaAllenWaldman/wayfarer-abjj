@@ -1,6 +1,7 @@
 import React from 'react'
 import DynamicForm from './DynamicForm'
 import ReactDOM from 'react-dom'
+import PostShow from './PostShow'
 class PostCard extends React.Component {
   constructor() {
     super()
@@ -15,9 +16,12 @@ class PostCard extends React.Component {
   truncate = (str) => {
     return str.length > 1000 ? str.substring(0, 997) + '...' : str
   }
+  showPost = () => {
+    ReactDOM.render(<PostShow postData={this.props.postData} closeForm={this.closeForm} />, document.getElementById('modal-root'))
+  }
   render() {
   return (
-    <div className="card">
+    <div className="card" onClick={this.showPost}>
       <div className="title">
         <h4> {this.props.postData.title} </h4>
       </div>
