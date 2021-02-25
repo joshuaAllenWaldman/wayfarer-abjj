@@ -1,7 +1,6 @@
 import React from 'react';
 import PostList from './PostList'
 import CityList from './CityList';
-import image1 from '../images/san-fran.jpg';
 import ReactDOM from 'react-dom'
 import DynamicForm from './DynamicForm'
 
@@ -18,8 +17,6 @@ class CityShow extends React.Component {
 
   postFetcher = () => {
     fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`).then((res) => res.json()).then((jsonData) => {
-      // console.log('JSON DATA',jsonData)
-      // console.log('PROPS',this.props)
       const filteredPosts = jsonData.filter((post) => {
         return post.city === this.props.currentCity._id
       })
