@@ -35,6 +35,8 @@ class CityShow extends React.Component {
   }
 
   deletePost = (postId, cityId) => {
+    let confirmed = window.confirm('Are you sure?');
+    if (confirmed) {
     //FIlters out the deleted post from the post state. but it returns when you refresh the page cause there is no db call
     fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
       method: 'DELETE',
@@ -52,7 +54,9 @@ class CityShow extends React.Component {
           posts: filteredPosts
         }) 
       })
+    }
   }
+
 
   render() {
     return (
