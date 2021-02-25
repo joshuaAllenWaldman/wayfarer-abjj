@@ -2,14 +2,17 @@ import React from 'react';
 import PostList from './PostList'
 import CityList from './CityList';
 import image1 from '../images/san-fran.jpg';
-
+import ReactDOM from 'react-dom'
+import DynamicForm from './DynamicForm'
 
 class CityShow extends React.Component {
   constructor() {
     super()
     this.updatePosts = this.updatePosts.bind(this)
+    this.closeForm = this.closeForm.bind(this)
     this.state = {
-      posts: []
+      posts: [],
+      currentCity: {}
     }
   }
 
@@ -17,13 +20,13 @@ class CityShow extends React.Component {
     fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
       .then((res) => res.json())
       .then((jsonData) => {
-        console.log('JSON DATA',jsonData)
+        // console.log('JSON DATA',jsonData)
         const filteredPosts = jsonData.filter((post) => {
-          console.log('POST.CITY', post.city)
-          console.log('CURRENT CITY', this.props.currentCity)
+          // console.log('POST.CITY', post.city)
+          // console.log('CURRENT CITY', this.props.currentCity)
           return post.city === this.props.currentCity._id
         })
-        this.setState({posts: filteredPosts})
+        this.setState({posts: filteredPosts, currentCity: this.props.currentCity})
       })
     .catch((err) => console.log(err))
   }
@@ -59,7 +62,13 @@ class CityShow extends React.Component {
       })
     }
   }
+  showForm = () => {
+    ReactDOM.render(<DynamicForm closeForm={this.closeForm} currentCity={this.state.currentCity}/>, document.getElementById('modal-root'))
+  }
 
+  closeForm = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
+  }
 
   render() {
     console.log(this.state)
@@ -80,7 +89,7 @@ class CityShow extends React.Component {
             <div className="col city-image">
               <img src={image1} id="main-city-image" alt=""/>
               <div className="create-button">
-              <i className="fas fa-plus-circle" id="plusBtn"></i>
+              <i onClick={this.showForm} className="fas fa-plus-circle" id="plusBtn"></i>
               </div>
             </div>
           </div>

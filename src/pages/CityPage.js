@@ -1,19 +1,12 @@
 import React from 'react';
 // import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import ReactDOM from 'react-dom'
-import DynamicForm from '../components/DynamicForm'
 
 class CityPage extends React.Component {
-  constructor() {
-    super()
-    this.closeForm = this.closeForm.bind(this)
-    this.state = {
+  state = {
       cityData: [],
       currentCity: {},
     }
-  }
-
 
   componentDidMount() {
     fetch('https://abjj-wayfarer-api.herokuapp.com/cities/')
@@ -33,14 +26,6 @@ class CityPage extends React.Component {
     })
   }
 
-  showForm = () => {
-    ReactDOM.render(<DynamicForm closeForm={this.closeForm} currentCity={this.state.currentCity}/>, document.getElementById('modal-root'))
-  }
-
-  closeForm = () => {
-    ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
-  }
-
   render() {
     console.log('CityPage CityPage', this.state.currentCity)
     return ( 
@@ -52,7 +37,6 @@ class CityPage extends React.Component {
               updateCurrentCity={this.updateCurrentCity}
             />
         </div>
-        <button onClick={this.showForm}>Add New Post</button>
         <div id="modal-root"></div>
       </>
 
