@@ -18,7 +18,8 @@ class PostCard extends React.Component {
       <DynamicForm 
         closeForm={this.closeForm} 
         edit={true} 
-        post={this.props.postData._id} 
+        post={this.props.postData._id}
+        city={this.props.postData.city} 
         updatePosts={this.props.updatePosts} 
         />, document.getElementById('modal-root'))
   }
