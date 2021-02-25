@@ -7,7 +7,7 @@ const CityList = (props) => {
       <Link to={'/cities'} onClick={() => {
         props.updateCurrentCity(city);
         props.updatePosts();
-      }}>
+      }} key={city._id} >
         <CityListCard key={city._id} city={city} />
 
       </Link>

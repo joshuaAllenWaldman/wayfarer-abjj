@@ -1,7 +1,6 @@
 import image1 from '../images/london.jpg';
 
 const CityListCard = (props) => {
-  console.log(props)
   return (
     <div className="card" id="city-container">
         <div className="row g-0" id="city-card">
