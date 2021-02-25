@@ -29,6 +29,13 @@ class NewPostForm extends React.Component {
     })
   }
 
+  hideForm = () => {
+    const form = document.getElementById('modal');
+    if (form.style.display !== 'none') {
+      form.style.display = 'none';
+    }
+  };
+
   componentDidUpdate() {}
 
   handleSubmit = (event) => {
@@ -55,6 +62,11 @@ class NewPostForm extends React.Component {
       // console.log(jsonData)
     })
     .catch((err) => {throw err})
+
+    this.setState({ title: '', body: '' });
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('title').value = '';
+    document.getElementById('body').value = '';
   }
 
   render() {
@@ -76,6 +88,7 @@ class NewPostForm extends React.Component {
         <textarea onChange={this.handleChange} name="body" id="body" cols="19" rows="5"></textarea>
         <br/>
         <button type="submit" >Submit</button>
+        <button type="button" onClick={this.hideForm}>Close</button>
       </form>
 
     </div>
