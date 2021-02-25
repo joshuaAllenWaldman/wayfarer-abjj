@@ -84,7 +84,7 @@ class CityShow extends React.Component {
 
             <div className="col city-name">
               <p className="CityName">{this.props.currentCity.name}</p>
-              <p className="CitySubtitle">CALIFORNIA</p>
+              <p className="CitySubtitle">{this.props.currentCity.country}</p>
             </div>
 
             <div className="col city-image">
