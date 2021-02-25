@@ -72,14 +72,16 @@ class NewPostForm extends React.Component {
   render() {
     const options = []
       for (let city of this.state.cities) {
-        options.push(<option value={city._id}>{city.name}</option>)
+        if (city.name !== this.props.currentCity.name){
+          options.push(<option value={city._id}>{city.name}</option>)
+        } 
       }
-    
   return (
     <div className="container">
       <h2>Create a new Post</h2>
       <form onSubmit={this.handleSubmit}>
         <select name="city" id="city" onChange={this.handleChange}>
+          <option value={this.props.currentCity._id}>{this.props.currentCity.name}</option>
           {options}
         </select> <br/>
         <label htmlFor="title">Title</label> <br/>

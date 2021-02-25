@@ -3,6 +3,7 @@ import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
 import NewPostForm from '../components/NewPostForm';
 import CityList from '../components/CityList';
+import EditPostForm from '../components/EditPostForm';
 
 
 class CityPage extends React.Component {
