@@ -1,43 +1,61 @@
 import React from 'react';
+// import image1 from '../images/london.jpg';
+import CityShow from '../components/CityShow';
+import ReactDOM from 'react-dom'
+import DynamicForm from '../components/DynamicForm'
 
 class CityPage extends React.Component {
+  constructor() {
+    super()
+    this.closeForm = this.closeForm.bind(this)
+    this.state = {
+      cityData: [],
+      currentCity: {},
+    }
+  }
 
-  //make api call for cities, should also get the comment id's with it. 
 
-  render () {
-    return (
-      <div className="container">
-        <div className="cities-list">
-          <h1>cities</h1>
-          <ul>
-            <li>City</li>
-            <li>City</li>
-            <li>City</li>
-            <li>City</li>
-          </ul>
+  componentDidMount() {
+    fetch('https://abjj-wayfarer-api.herokuapp.com/cities/')
+    .then((res) => res.json())
+    .then((jsonData) => {
+      console.log('CIty Page JSON: ', jsonData[0])
+      this.setState({
+        cityData: jsonData,
+        currentCity: jsonData[0]
+      })
+    }).catch((err) => console.log(err))
+  }
+
+  updateCurrentCity = (city) => {
+    this.setState({
+      currentCity: city
+    })
+  }
+
+  showForm = () => {
+    ReactDOM.render(<DynamicForm closeForm={this.closeForm} currentCity={this.state.currentCity}/>, document.getElementById('modal-root'))
+  }
+
+  closeForm = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
+  }
+
+  render() {
+    console.log('CityPage CityPage', this.state.currentCity)
+    return ( 
+      <>
+        <div className="container-fluid cities">
+            <CityShow 
+              cities={this.state.cityData}
+              currentCity={this.state.currentCity}
+              updateCurrentCity={this.updateCurrentCity}
+            />
         </div>
-        <div className="city-show">
+        <button onClick={this.showForm}>Add New Post</button>
+        <div id="modal-root"></div>
+      </>
 
-          <div className="city-header row">
-            <div className="city-title">
-              <h1>CityName</h1>
-              <h2>Country</h2>  
-            </div>
-            <div className="city-pic">
-              <img src="" alt=""/>
-            </div>
-          </div>
-
-          <div className="post-container">
-            <h2>Posts</h2>
-            <ul>
-              <li>POST</li>
-              <li>POST</li>
-            </ul>
-          </div>
-        </div>
-
-    </div>
     )
   }
 }

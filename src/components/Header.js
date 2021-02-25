@@ -2,19 +2,17 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div>
-      <div className="row">
-        <div className="col-6">
-            <h4>Wayfare Logo</h4>
+    <header>
+        <div className="header">
+            <div className="wayfare-logo">
+              <Link to="/"><h3>Wayfare Logo</h3></Link>
+            </div>
+            <div className="nav">
+              <Link to="/cities">Sign in</Link>{' '}
+              <Link to="/cities">Sign up</Link>  
+            </div>
         </div>
-        <div className="col-6">
-          <nav className="nav justify-content-end">
-            <Link to="">Sign in</Link>{' '}
-            <Link to="">Sign up</Link>
-          </nav>
-        </div>
-      </div>
-    </div>
+    </header>
   )
 }
 
