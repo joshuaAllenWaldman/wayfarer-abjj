@@ -85,7 +85,7 @@ class CityShow extends React.Component {
             <div className="col city-image">
               <img src={image1} id="main-city-image" alt=""/>
               <div className="create-button">
-              <i className="fas fa-plus-circle" id="plusBtn"></i>
+              <i className="fas fa-plus-circle" id="plusBtn" onClick={this.props.showForm}></i>
               </div>
               {/* {this.props.cities[0].image} */}
             </div>
