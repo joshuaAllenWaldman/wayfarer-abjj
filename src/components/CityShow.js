@@ -33,6 +33,16 @@ class CityShow extends React.Component {
     .catch((err) => console.log(err))
   }
 
+  deletePost = (postId) => {
+    //FIlters out the deleted post from the post state. but it returns when you refresh the page cause there is no db call
+    const filteredPosts = this.state.posts.filter((post) => {
+      return postId !== post._id
+    });
+    this.setState({
+      posts: filteredPosts
+    }) 
+  }
+
   render() {
     return (
       <>
@@ -51,18 +61,17 @@ class CityShow extends React.Component {
         <div className="city-show col">
           <div className="city-header row">
             <div className="city-title">
-              <h1>{
-                this.props.currentCity.name
-              }</h1>
+              <h1>{this.props.currentCity.name}</h1>
             </div>
             <div className="city-pic">
               <img src="" alt=""/>
             </div>
           </div>
           <div className="post-container">
-            <PostList postData={
-              this.state.posts
-            }/>
+            <PostList 
+            postData={this.state.posts}
+            deletePost={this.deletePost}
+            />
           </div>
         </div>
 
