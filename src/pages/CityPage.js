@@ -1,7 +1,6 @@
 import React from 'react';
 // import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import CityList from '../components/CityList';
 import ReactDOM from 'react-dom'
 import DynamicForm from '../components/DynamicForm'
 
@@ -9,11 +8,10 @@ class CityPage extends React.Component {
   constructor() {
     super()
     this.closeForm = this.closeForm.bind(this)
-  }
-  state = {
-    cityData: [],
-    currentCity: {},
-    currentCityPosts: [],
+    this.state = {
+      cityData: [],
+      currentCity: {},
+    }
   }
 
 
@@ -21,8 +19,11 @@ class CityPage extends React.Component {
     fetch('https://abjj-wayfarer-api.herokuapp.com/cities/')
     .then((res) => res.json())
     .then((jsonData) => {
-      this.setState({cityData: jsonData})
-      this.setState({currentCity: this.state.cityData[0]})
+      console.log('CIty Page JSON: ', jsonData[0])
+      this.setState({
+        cityData: jsonData,
+        currentCity: jsonData[0]
+      })
     }).catch((err) => console.log(err))
   }
 
@@ -41,7 +42,8 @@ class CityPage extends React.Component {
   }
 
   render() {
-    return (
+    console.log('CityPage CityPage', this.state.currentCity)
+    return ( 
       <>
         <div className="container-fluid cities">
             <CityShow 
@@ -49,11 +51,9 @@ class CityPage extends React.Component {
               currentCity={this.state.currentCity}
               updateCurrentCity={this.updateCurrentCity}
             />
-
         </div>
         <button onClick={this.showForm}>Add New Post</button>
         <div id="modal-root"></div>
-
       </>
 
     )

@@ -12,8 +12,6 @@ class PostShow extends React.Component {
                     <div className="body">
                         <p> {this.props.postData.body} </p>
                     </div>
-                    <button onClick={this.launchEdit}>Edit</button>
-                    <button onClick={() => {this.props.deletePost(this.props.postData._id, this.props.postData.city)}}>Delete!</button>
                     <button onClick={this.props.closeForm}>Close</button>
                     </div>
                 </div>
