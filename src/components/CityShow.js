@@ -17,10 +17,9 @@ class CityShow extends React.Component {
     fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
       .then((res) => res.json())
       .then((jsonData) => {
-        console.log('JSON DATA',jsonData)
+        // console.log('JSON DATA',jsonData)
+        // console.log('PROPS',this.props)
         const filteredPosts = jsonData.filter((post) => {
-          console.log('POST.CITY', post.city)
-          console.log('CURRENT CITY', this.props.currentCity)
           return post.city === this.props.currentCity._id
         })
         this.setState({posts: filteredPosts})
@@ -31,6 +30,14 @@ class CityShow extends React.Component {
   componentDidMount() {
     // console.log('+++++++++++++')
     this.postFetcher()
+  }
+
+  componentDidUpdate(prevProps) {
+    //throw postFetcher in here after if check.
+    if(this.props.currentCity._id === prevProps.city ){
+      this.postFetcher();
+      console.log('hit it')
+    }
   }
 
   updatePosts = () => {
@@ -78,7 +85,7 @@ class CityShow extends React.Component {
               <p className="CitySubtitle">{this.props.currentCity.country}</p>
             </div>
             <div className="col city-image">
-              <img src={image1} id="main-city-image" alt=""/>
+              <img src={this.props.currentCity.image} id="main-city-image" alt=""/>
               <div className="create-button">
               <i className="fas fa-plus-circle" id="plusBtn"></i>
               </div>
