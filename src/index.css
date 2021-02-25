@@ -129,6 +129,18 @@ a {
   color: darkblue;
 }
 
+#modal {
+  position: absolute;
+  background-color: white;
+  border: solid black 2px;
+  padding: 2em;
+  width: 50%;
+  height: 50%;
+  left: 25%;
+  top: 25%;
+  display: none;
+}
+
 /* ----------------------------
     CityPage / Cities Column
 ------------------------------- */

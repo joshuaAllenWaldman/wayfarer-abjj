@@ -9,7 +9,7 @@ class CityPage extends React.Component {
   state = {
     cityData: [],
     currentCity: {},
-    currentCityPosts: []
+    currentCityPosts: [],
   }
 
 
@@ -37,6 +37,15 @@ class CityPage extends React.Component {
     })
   }
 
+  showForm = (event) => {
+    const form = document.getElementById('modal');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  };
+
 
   render() {
     return (
@@ -53,9 +62,17 @@ class CityPage extends React.Component {
               }/>
 
         </div>
-          <NewPostForm currentCity={this.state.currentCity}/>
 
-      </>  
+        <div id="modal">
+          <NewPostForm 
+            currentCity={this.state.currentCity} 
+          />
+        </div>
+        <button onClick={this.showForm}>Add New Post</button>
+
+
+      </>
+
     )
   }
 }
