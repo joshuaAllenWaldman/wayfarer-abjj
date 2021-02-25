@@ -1,6 +1,7 @@
 import React from 'react';
 import PostList from './PostList'
 import CityList from './CityList';
+import image1 from '../images/san-fran.jpg';
 
 
 class CityShow extends React.Component {
@@ -48,22 +49,30 @@ class CityShow extends React.Component {
           updatePosts={this.updatePosts}
 
           />
-        <div className="city-show col">
-          <div className="city-header row">
-            <div className="city-title">
-              <h1>{
-                this.props.currentCity.name
-              }</h1>
+
+        <div className="container-fluid right-column">
+          <div className="row city-content">
+
+            <div className="col city-name">
+              <p className="CityName">{this.props.currentCity.name}</p>
+              <p className="CitySubtitle">CALIFORNIA</p>
             </div>
-            <div className="city-pic">
-              <img src="" alt=""/>
+
+            <div className="col city-image">
+              <img src={this.props.cities[0].image} id="main-city-image" alt=""/>
+              <div className="create-button">
+              <i className="fas fa-plus-circle" id="plusBtn"></i>
+              </div>
             </div>
+
           </div>
+
           <div className="post-container">
             <PostList postData={
               this.state.posts
             }/>
           </div>
+
         </div>
 
       </>

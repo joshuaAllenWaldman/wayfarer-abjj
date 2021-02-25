@@ -1,8 +1,8 @@
 import React from 'react';
-import image1 from '../images/london.jpg';
+// import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import NewPostForm from '../components/NewPostForm';
-import CityList from '../components/CityList';
+// import NewPostForm from '../components/NewPostForm';
+// import CityList from '../components/CityList';
 
 
 class CityPage extends React.Component {

@@ -135,15 +135,58 @@ a {
     CityPage / Cities Column
 ------------------------------- */
 
-#cities {
-  background: lightslategrey;
-  height: 415px;
+.city-content {
+  align-items: baseline;
 }
 
-#city-post {
-  background: rgb(31, 80, 145);
-  height: 300px;
+.CityName {
+  font-size: 90px;
+  padding-left: 60px;
 }
+
+.CitySubtitle {
+  font-size: 30px;
+  padding-left: 60px;
+  margin-top: -50px;
+}
+
+.city-image {
+  height: 450px;
+  width: 100%;
+}
+
+#main-city-image {
+  height: 80%;
+  width: inherit;
+  object-fit: cover;
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+.create-button {
+  height: 40px;
+  width: 700px;
+}
+
+#plusBtn {
+  font-size: 50px;
+  color: red;
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+/* ----------------------------
+        POST Container
+------------------------------- */
+
+.post-container {
+  width: 97%;
+  padding-left: 60px;
+}
+
+
 
 /* ----------------------------
           FOOTER

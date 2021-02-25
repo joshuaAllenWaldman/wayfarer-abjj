@@ -1,4 +1,4 @@
-import image1 from '../images/london.jpg';
+
 
 const CityListCard = (props) => {
   return (

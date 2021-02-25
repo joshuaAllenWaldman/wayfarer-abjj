@@ -1,4 +1,5 @@
 import PostCard from './PostCard'
+import image1 from '../images/san-fran.jpg';
 
 function dateSort(a, b) {
   return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
