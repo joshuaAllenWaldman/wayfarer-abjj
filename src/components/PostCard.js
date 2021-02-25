@@ -10,7 +10,12 @@ class PostCard extends React.Component {
     ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
   }
   launchEdit = () => {
-    ReactDOM.render(<DynamicForm closeForm={this.closeForm} edit={true} post={this.props.postData._id}/>, document.getElementById('modal-root'))
+    ReactDOM.render(<DynamicForm 
+                    closeForm={this.closeForm} 
+                    edit={true} 
+                    post={this.props.postData._id} 
+                    updatePosts={this.props.updatePosts} 
+                    />, document.getElementById('modal-root'))
   }
   render() {
   return (

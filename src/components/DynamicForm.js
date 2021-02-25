@@ -23,7 +23,7 @@ class DynamicForm extends React.Component {
         fetch(`https://abjj-wayfarer-api.herokuapp.com/cities/`)
             .then((res) => res.json())
             .then((jsonData) => {
-                 this.setState({cities: jsonData})
+                this.setState({cities: jsonData})
             })
             .catch((err) => console.log(err))
         
@@ -59,8 +59,9 @@ class DynamicForm extends React.Component {
               .then((jsonData) => {
                 // console.log(jsonData)
               })
+              .then(this.props.updatePosts) 
               .catch((err) => {throw err})
-              .then(this.props.closeForm)  
+              .then(this.props.closeForm)
             } else {
             requestBody._id = this.props.post
             fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
@@ -78,6 +79,7 @@ class DynamicForm extends React.Component {
             .then((jsonData) => {
                 // console.log(jsonData)
               })
+            .then(this.props.updatePosts) 
             .catch((err) => {throw err})
             .then(this.props.closeForm)
         }

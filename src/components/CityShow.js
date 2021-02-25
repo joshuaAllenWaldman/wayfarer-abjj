@@ -5,6 +5,10 @@ import image1 from '../images/san-fran.jpg';
 
 
 class CityShow extends React.Component {
+  constructor() {
+    super()
+    this.updatePosts = this.updatePosts.bind(this)
+  }
   state = {
     posts: []
   }
@@ -38,7 +42,7 @@ class CityShow extends React.Component {
     let confirmed = window.confirm('Are you sure?');
     if (confirmed) {
     //FIlters out the deleted post from the post state. but it returns when you refresh the page cause there is no db call
-    fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
+    fetch(`https://abjj-wayfarer-api.herokuapp.com/post/${postId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -59,6 +63,7 @@ class CityShow extends React.Component {
 
 
   render() {
+    console.log(this.props.cities)
     return (
       <>
         <CityList cities={
@@ -83,7 +88,7 @@ class CityShow extends React.Component {
             </div>
 
             <div className="col city-image">
-              <img src={this.props.cities[0].image} id="main-city-image" alt=""/>
+              <img src={image1} id="main-city-image" alt=""/>
               <div className="create-button">
               <i className="fas fa-plus-circle" id="plusBtn"></i>
               </div>
@@ -95,6 +100,7 @@ class CityShow extends React.Component {
             <PostList 
             postData={this.state.posts}
             deletePost={this.deletePost}
+            updatePosts={this.updatePosts}
             />
           </div>
 

@@ -15,6 +15,7 @@ const PostList = (props) => {
         key={props.postData[index]._id}
         deletePost={props.deletePost}
         launchEditForm={props.launchEditForm}
+        updatePosts={props.updatePosts}
 
         /> 
     )
