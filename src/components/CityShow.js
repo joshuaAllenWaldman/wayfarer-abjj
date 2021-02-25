@@ -1,7 +1,6 @@
 import React from 'react';
 import PostList from './PostList'
 import CityList from './CityList';
-import EditPostForm from './EditPostForm';
 
 
 class CityShow extends React.Component {
@@ -54,13 +53,6 @@ class CityShow extends React.Component {
       })
   }
 
-  launchEditForm = (postId) => {
-    
-
-  }
-
-  
-
   render() {
     return (
       <>
@@ -89,13 +81,8 @@ class CityShow extends React.Component {
             <PostList 
             postData={this.state.posts}
             deletePost={this.deletePost}
-            launchEditForm={this.launchEditForm}
             />
           </div>
-        <EditPostForm
-        cities={this.props.cities}  
-        city={this.props.currentCity} 
-        posts={this.state.posts} />
         </div>
       </>
 

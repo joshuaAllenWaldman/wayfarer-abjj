@@ -1,12 +1,15 @@
 import React from 'react';
 import image1 from '../images/london.jpg';
 import CityShow from '../components/CityShow';
-import NewPostForm from '../components/NewPostForm';
 import CityList from '../components/CityList';
-import EditPostForm from '../components/EditPostForm';
-
+import ReactDOM from 'react-dom'
+import DynamicForm from '../components/DynamicForm'
 
 class CityPage extends React.Component {
+  constructor() {
+    super()
+    this.closeForm = this.closeForm.bind(this)
+  }
   state = {
     cityData: [],
     currentCity: {},
@@ -38,15 +41,13 @@ class CityPage extends React.Component {
     })
   }
 
-  showForm = (event) => {
-    const form = document.getElementById('modal');
-    if (form.style.display === 'none') {
-      form.style.display = 'block';
-    } else {
-      form.style.display = 'none';
-    }
-  };
+  showForm = () => {
+    ReactDOM.render(<DynamicForm closeForm={this.closeForm} currentCity={this.state.currentCity}/>, document.getElementById('modal-root'))
+  }
 
+  closeForm = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
+  }
 
   render() {
     return (
@@ -63,14 +64,8 @@ class CityPage extends React.Component {
               }/>
 
         </div>
-
-        <div id="modal">
-          <NewPostForm 
-            currentCity={this.state.currentCity} 
-          />
-        </div>
         <button onClick={this.showForm}>Add New Post</button>
-
+        <div id="modal-root"></div>
 
       </>
 
