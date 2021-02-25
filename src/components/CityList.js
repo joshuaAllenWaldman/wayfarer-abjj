@@ -1,23 +1,30 @@
 import { Link } from 'react-router-dom'
+import CityListCard from './CityListCard';
 
 const CityList = (props) => {
   const cities = props.cities.map((city) => {
+    return (
+      <Link to={'/cities'} onClick={() => {
+        props.updateCurrentCity(city);
+        props.updatePosts();
+      }} key={city._id} >
+        <CityListCard key={city._id} city={city} />
 
-    return <li key={city._id} onClick={()=>{
-      props.updateCurrentCity(city)
-      props.updatePosts();
-      }}
-    
-    ><Link to={'/cities'}> {city.name} </Link></li>
+      </Link>
+    )
   })
   return (
-    <div className="cities-list col">
-          <h1>Cities</h1>
-          <ul>
-            { cities }
-          </ul>
-        </div>
+    <div className="col-6 col-md-4" id="cities-container">
+      <span className="cities-card">Cities</span>
+      {cities}
+
+    </div>
   )
 }
+
+// key={city._id} onClick={()=>{
+//   props.updateCurrentCity(city)
+//   props.updatePosts();
+//   }}
 
 export default CityList;

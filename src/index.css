@@ -100,10 +100,11 @@ a {
   justify-content: center;
   font-size: 3rem;
   padding-top: 30px;
+  padding-bottom: 40px;
 }
 
 #city-container {
-  margin: 30px;
+  margin: 0 30px 0 30px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -129,19 +130,81 @@ a {
   color: darkblue;
 }
 
+.mymodal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.mymodalcontent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
 /* ----------------------------
     CityPage / Cities Column
 ------------------------------- */
 
-#cities {
-  background: lightslategrey;
-  height: 415px;
+.city-content {
+  align-items: baseline;
 }
 
-#city-post {
-  background: rgb(31, 80, 145);
-  height: 300px;
+.CityName {
+  font-size: 90px;
+  padding-left: 60px;
 }
+
+.CitySubtitle {
+  font-size: 30px;
+  padding-left: 60px;
+  margin-top: -50px;
+}
+
+.city-image {
+  height: 450px;
+  width: 100%;
+}
+
+#main-city-image {
+  height: 80%;
+  width: inherit;
+  object-fit: cover;
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+.create-button {
+  height: 40px;
+  width: 700px;
+}
+
+#plusBtn {
+  font-size: 50px;
+  color: red;
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+/* ----------------------------
+        POST Container
+------------------------------- */
+
+.post-container {
+  width: 97%;
+  padding-left: 60px;
+}
+
+
 
 /* ----------------------------
           FOOTER
