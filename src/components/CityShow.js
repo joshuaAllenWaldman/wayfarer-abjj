@@ -79,11 +79,15 @@ class CityShow extends React.Component {
 
             <div className="col city-name">
               <p className="CityName">{this.props.currentCity.name}</p>
-              <p className="CitySubtitle">CALIFORNIA</p>
+              <p className="CitySubtitle">{this.props.currentCity.country}</p>
             </div>
 
             <div className="col city-image">
+<<<<<<< HEAD
               <img src={image1} id="main-city-image" alt=""/>
+=======
+              {/* <img src={this.props.cities[0].image} id="main-city-image" alt=""/> */}
+>>>>>>> 351eade4873c48e31abbc45846f7ec9235e78c51
               <div className="create-button">
               <i className="fas fa-plus-circle" id="plusBtn" onClick={this.props.showForm}></i>
               </div>
