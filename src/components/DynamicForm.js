@@ -92,7 +92,7 @@ class DynamicForm extends React.Component {
 
     if (this.state.new) {
       return (
-        <div className="mymodal">
+        <div className="mymodal" onClick={this.props.closeForm}>
           <div className="mymodalcontent">
             <h3>Create a New Post for {this.state.currentCity.name}</h3>
             <form onSubmit={this.handleSubmit}>
@@ -121,7 +121,7 @@ class DynamicForm extends React.Component {
       )
     } else {
       return (
-        <div className="mymodal">
+        <div className="mymodal" onClick={this.props.closeForm}>
           <div className="mymodalcontent">
             <h3>Edit a Post on {this.state.currentCity.name}</h3>
             <form onSubmit={this.handleSubmit}>
