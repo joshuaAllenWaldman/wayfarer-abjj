@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
+import Wlogo from '../images/wayfarer-logo.png';
 
 const Header = () => {
   return (
     <header>
         <div className="header">
             <div className="wayfare-logo">
-              <Link to="/"><h3>Wayfare Logo</h3></Link>
+              <Link to="/">
+              <img src={Wlogo} alt="" id="wayfarer-logo"/>
+              </Link>
             </div>
             <div className="nav">
               <Link to="/cities">Sign in</Link>{' '}

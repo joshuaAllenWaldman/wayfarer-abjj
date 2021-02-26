@@ -117,7 +117,6 @@ class CityShow extends React.Component {
                   className="fas fa-plus-circle"
                   id="plusBtn"></i>
               </div>
-              {/* {this.props.cities[0].image} */}
             </div>
           </div>
           <div className="post-container">
