@@ -1,5 +1,3 @@
-
-
 const CityListCard = (props) => {
   return (
     <div className="card" id="city-container">

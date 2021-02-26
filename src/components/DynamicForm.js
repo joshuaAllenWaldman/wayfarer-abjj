@@ -2,10 +2,10 @@ import React from 'react'
 
 class DynamicForm extends React.Component {
     state = {
-        cities: [],
-        city: '603555c12b0cc300154fea34', //Hardcoded San Francisco as the default city value to stop my suffering
         title: '',
         body: '',
+        city: '',
+        currentCity: '',
         new: true
     }
 
@@ -15,17 +15,14 @@ class DynamicForm extends React.Component {
             fetch(`https://abjj-wayfarer-api.herokuapp.com/post/${this.props.post}`)
             .then((res) => res.json())
             .then((jsonData) => {
-                this.setState({city: jsonData.city})
-                this.setState({title: jsonData.title})
-                this.setState({body: jsonData.body})
+                this.setState({city: jsonData.city, title: jsonData.title, body: jsonData.body})
             })
-        }
-        fetch(`https://abjj-wayfarer-api.herokuapp.com/cities/`)
-            .then((res) => res.json())
-            .then((jsonData) => {
-                 this.setState({cities: jsonData})
-            })
-            .catch((err) => console.log(err))
+            fetch(`https://abjj-wayfarer-api.herokuapp.com/city/${this.props.city}`)
+                .then((res) => res.json())
+                .then((jsonData) => {
+                    this.setState({currentCity: jsonData})
+                })
+        } else {this.setState({currentCity: this.props.currentCity, city: this.props.currentCity._id})}
         
     }
 
@@ -43,60 +40,66 @@ class DynamicForm extends React.Component {
             title: this.state.title,
             body: this.state.body
           }
-        if (this.state.new) {
-            fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
-                method: 'post',
-                // enctype: 'multipart/form-data',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-              })
-              .then((response) => {
-                // console.log(response)
+        console.log(`request body: ${requestBody}`)
+        if (requestBody.city && (requestBody.title.length > 0) && (requestBody.title.length < 200) && requestBody.body) {
+            console.log(`all true!`)
+            if (this.state.new) {
+                fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
+                    method: 'post',
+                    // enctype: 'multipart/form-data',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                  })
+                  .then((response) => {
+                    // console.log(response)
+                    return response.json()
+                  })
+                  .then((jsonData) => {
+                    // console.log(jsonData)
+                  })
+                  .then(this.props.updatePosts) 
+                  .catch((err) => {throw err})
+                  .then(this.props.closeForm)
+                } else {
+                requestBody._id = this.props.post
+                fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
+                    method: 'put',
+                    //enctype: 'multipart/form-data',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+                .then((response) => {
+                    // console.log(response)
                 return response.json()
-              })
-              .then((jsonData) => {
-                // console.log(jsonData)
-              })
-              .catch((err) => {throw err})
-              .then(this.props.closeForm)  
-            } else {
-            requestBody._id = this.props.post
-            fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
-                method: 'put',
-                //enctype: 'multipart/form-data',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            })
-            .then((response) => {
-                // console.log(response)
-            return response.json()
-              })
-            .then((jsonData) => {
-                // console.log(jsonData)
-              })
-            .catch((err) => {throw err})
-            .then(this.props.closeForm)
+                  })
+                .then((jsonData) => {
+                    // console.log(jsonData)
+                  })
+                .then(this.props.updatePosts) 
+                .catch((err) => {throw err})
+                .then(this.props.closeForm)
+            }
+        } else {
+            if (!requestBody.city) {alert('Missing City!')}
+            else if (requestBody.title.length < 1) {alert('Post must include a title')}
+            else if (requestBody.title.length > 200) {alert('Title too long')}
+            else if (!requestBody.body) {alert('Post must include a body')}
+            else {alert('Unknown Error')}
         }
     }
 
     render() {
-        const options = []
-        for (let city of this.state.cities) {
-          options.push(<option value={city._id}>{city.name}</option>)
-        }
+
         if (this.state.new) {
             return(
                 <div className="mymodal">
                 <div className="mymodalcontent">
-                    <h3>Create a New Post</h3>
+                    <h3>Create a New Post for {this.state.currentCity.name}</h3>
                     <form onSubmit={this.handleSubmit}>
-                        <select name="city" id="city" onChange={this.handleChange}>
-                            {options}
-                        </select> <br/>
                         <label htmlFor="title">Title</label> <br/>
                         <input onChange={this.handleChange} type="text" id="title" name="title" /> <br/>
                         <label htmlFor="body">Body</label> <br/>
@@ -112,13 +115,8 @@ class DynamicForm extends React.Component {
             return(
                 <div className="mymodal">
                 <div className="mymodalcontent">
-                    <h3>Edit a Post</h3>
+                    <h3>Edit a Post on {this.state.currentCity.name}</h3>
                     <form onSubmit={this.handleSubmit}>
-                    {/* Changing the city of an existing post not yet supported */}
-                    {/* <select name="city" id="city"  onChange={this.handleChange}>
-                        <option value={this.props.city._id}>{this.props.city.name}</option>
-                        {options}
-                    </select> <br/> */}
                     <label htmlFor="title">Title</label> <br/>
                     <input onChange={this.handleChange} type="text" id="title" name="title" value={this.state.title}/> <br/>
                     <label htmlFor="body">Body</label> <br/>

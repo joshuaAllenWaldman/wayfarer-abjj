@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-   <div>
+    <div>
     <Header />
     <div>
       { routes }
@@ -14,7 +14,6 @@ function App() {
     <Footer />
   </div>
   );
-
 }
 
 export default App;

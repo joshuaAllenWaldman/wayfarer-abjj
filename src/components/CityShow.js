@@ -1,64 +1,83 @@
 import React from 'react';
 import PostList from './PostList'
 import CityList from './CityList';
-import image1 from '../images/san-fran.jpg';
-
+import ReactDOM from 'react-dom'
+import DynamicForm from './DynamicForm'
 
 class CityShow extends React.Component {
-  state = {
-    posts: []
+  constructor() {
+    super()
+    this.updatePosts = this.updatePosts.bind(this)
+    this.closeForm = this.closeForm.bind(this)
+    this.state = {
+      posts: [],
+      currentCity: {}
+    }
+  }
+
+  postFetcher = () => {
+    fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`).then((res) => res.json()).then((jsonData) => {
+      const filteredPosts = jsonData.filter((post) => {
+        return post.city === this.props.currentCity._id
+      })
+      this.setState({posts: filteredPosts, currentCity: this.props.currentCity})
+    }).catch((err) => console.log(err))
   }
 
   componentDidMount() {
-    fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
-      .then((res) => res.json())
-      .then((jsonData) => {
-        const filteredPosts = jsonData.filter((post) => {
-          return post.city === this.props.currentCity._id
-        })
-        this.setState({posts: filteredPosts})
-    })
-    .catch((err) => console.log(err))
+    this.postFetcher()
+  }
+
+  componentDidUpdate(prevProps) { // throw postFetcher in here after if check.
+    if (this.props.currentCity._id && this.props.currentCity._id !== prevProps.currentCity._id) {
+      this.postFetcher();
+      console.log('hit it')
+    }
   }
 
   updatePosts = () => {
-    console.log('update hit')
-    fetch(`https://abjj-wayfarer-api.herokuapp.com/posts`)
-      .then((res) => res.json())
-      .then((jsonData) => {
-        const filteredPosts = jsonData.filter((post) => {
-          return post.city === this.props.currentCity._id
-        })
-        this.setState({posts: filteredPosts})
-    })
-    .catch((err) => console.log(err))
+    console.log('new post called')
+    this.postFetcher()
   }
 
   deletePost = (postId, cityId) => {
     let confirmed = window.confirm('Are you sure?');
     if (confirmed) {
-    //FIlters out the deleted post from the post state. but it returns when you refresh the page cause there is no db call
-    fetch('https://abjj-wayfarer-api.herokuapp.com/post/', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({_id: postId, city: cityId})
-    }).then((res) => res.json())
-      .then((jsonData) => {
-        console.log(jsonData)
+      fetch(`https://abjj-wayfarer-api.herokuapp.com/post/`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+          {_id: postId, city: cityId}
+        )
+      }).then((res) => res.json()).then((jsonData) => { // console.log(jsonData)
         const filteredPosts = this.state.posts.filter((post) => {
-        return postId !== post._id
+          return postId !== post._id
         });
-        this.setState({
-          posts: filteredPosts
-        }) 
+        this.setState({posts: filteredPosts})
       })
     }
   }
+  showForm = () => {
+    ReactDOM.render (
+      <DynamicForm closeForm={
+          this.closeForm
+        }
+        currentCity={
+          this.state.currentCity
+        }/>,
+      document.getElementById('modal-root')
+    )
+  }
 
+  closeForm = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
+    this.updatePosts();
+  }
 
   render() {
+    console.log(this.state)
     return (
       <>
         <CityList cities={
@@ -70,42 +89,52 @@ class CityShow extends React.Component {
           updateCurrentCity={
             this.props.updateCurrentCity
           }
-          updatePosts={this.updatePosts}
-
-          />
-
+          updatePosts={
+            this.updatePosts
+          }/>
         <div className="container-fluid right-column">
           <div className="row city-content">
-
             <div className="col city-name">
-              <p className="CityName">{this.props.currentCity.name}</p>
-              <p className="CitySubtitle">CALIFORNIA</p>
+              <p className="CityName">
+                {
+                this.props.currentCity.name
+              }</p>
+              <p className="CitySubtitle">
+                {
+                this.props.currentCity.country
+              }</p>
             </div>
-
             <div className="col city-image">
-              <img src={image1} id="main-city-image" alt=""/>
+              <img src={
+                  this.props.currentCity.image
+                }
+                id="main-city-image"
+                alt=""/>
               <div className="create-button">
-              <i className="fas fa-plus-circle" id="plusBtn"></i>
+                <i onClick={
+                    this.showForm
+                  }
+                  className="fas fa-plus-circle"
+                  id="plusBtn"></i>
               </div>
               {/* {this.props.cities[0].image} */}
             </div>
-
           </div>
-
           <div className="post-container">
-            <PostList 
-            postData={this.state.posts}
-            deletePost={this.deletePost}
-            />
+            <PostList postData={
+                this.state.posts
+              }
+              deletePost={
+                this.deletePost
+              }
+              updatePosts={
+                this.updatePosts
+              }/>
           </div>
-
         </div>
       </>
-
     )
   }
-
-
 }
 
 export default CityShow;
