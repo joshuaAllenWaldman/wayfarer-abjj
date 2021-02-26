@@ -26,18 +26,9 @@ class CityPage extends React.Component {
     }).catch((err) => console.log(err))
   }
 
-  fetchCityPosts = (cityId) => {
-    fetch(`https://abjj-wayfarer-api.herokuapp.com/post`).then((res) => res.json()).then((jsonData) => {
-      this.setState({currentCityPosts: jsonData})
-    }).catch((err) => console.log(err))
-  }
-
-
   updateCurrentCity = (city) => {
     this.setState({
       currentCity: city
-    }, () => {
-      this.fetchCityPosts(city._id)
     })
   }
 

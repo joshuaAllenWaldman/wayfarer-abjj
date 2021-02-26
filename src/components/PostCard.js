@@ -2,6 +2,8 @@ import React from 'react'
 import DynamicForm from './DynamicForm'
 import ReactDOM from 'react-dom'
 import PostShow from './PostShow'
+import image1 from '../images/san-fran.jpg';
+
 class PostCard extends React.Component {
   constructor() {
     super()
@@ -11,7 +13,12 @@ class PostCard extends React.Component {
     ReactDOM.unmountComponentAtNode(document.getElementById('modal-root'))
   }
   launchEdit = () => {
-    ReactDOM.render(<DynamicForm closeForm={this.closeForm} edit={true} post={this.props.postData._id}/>, document.getElementById('modal-root'))
+    ReactDOM.render(<DynamicForm 
+                    closeForm={this.closeForm} 
+                    edit={true} 
+                    post={this.props.postData._id} 
+                    updatePosts={this.props.updatePosts} 
+                    />, document.getElementById('modal-root'))
   }
   truncate = (str) => {
     return str.length > 1000 ? str.substring(0, 997) + '...' : str
@@ -21,15 +28,35 @@ class PostCard extends React.Component {
   }
   render() {
   return (
-    <div className="card" onClick={this.showPost}>
-      <div className="title">
-        <h4> {this.props.postData.title} </h4>
+
+    <div className="card mb-3">
+      <div className="row g-0">
+        <div className="col-md-4 postContent">
+          <img src={image1} className="postImage" alt="..." />
+        </div>
+        <div className="col-md-8">
+          <div className="card-body postBody">
+            <h5 className="card-title">{this.props.postData.title}</h5>
+            <p className="card-text">{this.truncate(this.props.postData.body)}</p>
+          </div>
+          <hr/>
+          <div className="EDbtn">
+            <div className="edit-btn" onClick={this.launchEdit}>
+            <p className="editBtn">EDIT</p>
+            </div>
+            <div className="delete-btn">
+            <p className="deleteBtn" onClick={() => {
+               this.props.deletePost(
+                 this.props.postData._id, 
+                 this.props.postData.city
+                )
+               }
+              }>DELETE
+            </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="body">
-        <p> {this.truncate(this.props.postData.body)} </p>
-      </div>
-      <button onClick={this.launchEdit}>Edit</button>
-      <button onClick={() => {this.props.deletePost(this.props.postData._id, this.props.postData.city)}}>Delete!</button>
     </div>
   )}
 }
