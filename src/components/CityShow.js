@@ -80,55 +80,33 @@ class CityShow extends React.Component {
     console.log(this.state)
     return (
       <>
-        <CityList cities={
-            this.props.cities
-          }
-          currentCity={
-            this.props.currentCity
-          }
-          updateCurrentCity={
-            this.props.updateCurrentCity
-          }
-          updatePosts={
-            this.updatePosts
-          }/>
+        <CityList 
+          cities={this.props.cities}
+          currentCity={this.props.currentCity}
+          updateCurrentCity={this.props.updateCurrentCity}
+          updatePosts={this.updatePosts }
+          />
         <div className="container-fluid right-column">
           <div className="row city-content">
             <div className="col city-name">
-              <p className="CityName">
-                {
-                this.props.currentCity.name
-              }</p>
-              <p className="CitySubtitle">
-                {
-                this.props.currentCity.country
-              }</p>
+              <p className="CityName">{this.props.currentCity.name}</p>
+              <p className="CitySubtitle">{this.props.currentCity.country}</p>
             </div>
             <div className="col city-image">
-              <img src={
-                  this.props.currentCity.image
-                }
+              <img src={this.props.currentCity.image}
                 id="main-city-image"
                 alt=""/>
               <div className="create-button">
-                <i onClick={
-                    this.showForm
-                  }
+                <i onClick={this.showForm}
                   className="fas fa-plus-circle"
                   id="plusBtn"></i>
               </div>
             </div>
           </div>
           <div className="post-container">
-            <PostList postData={
-                this.state.posts
-              }
-              deletePost={
-                this.deletePost
-              }
-              updatePosts={
-                this.updatePosts
-              }/>
+            <PostList postData={this.state.posts}
+              deletePost={this.deletePost}
+              updatePosts={this.updatePosts}/>
           </div>
         </div>
       </>
