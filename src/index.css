@@ -235,7 +235,7 @@ a {
 }
 
 .postImage {
-  height: 270px;
+  height: 240px;
 }
 
 .postBody {
@@ -287,6 +287,7 @@ a {
 .delete-btn:hover {
   background: #D50032;
   color: white;
+  border: 2px solid #D50032;
 }
 
 

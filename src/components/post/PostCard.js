@@ -25,7 +25,7 @@ class PostCard extends React.Component {
   }
 
   truncate = (str) => {
-    return str.length > 1000 ? str.substring(0, 997) + '...' : str
+    return str.length > 250 ? str.substring(0, 247) + '...' : str
   }
 
   showPost = () => {
