@@ -2,6 +2,7 @@ import React from 'react'
 import DynamicForm from './DynamicForm'
 import ReactDOM from 'react-dom'
 import PostShow from './PostShow'
+import image1 from '../images/wayfarer-logo.jpg'
 
 class PostCard extends React.Component {
   constructor() {
