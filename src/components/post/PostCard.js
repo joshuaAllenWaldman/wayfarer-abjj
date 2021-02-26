@@ -37,14 +37,13 @@ class PostCard extends React.Component {
 
   render() {
   return (
-
     <div className="card mb-3">
       <div className="row g-0">
         <div className="col-md-4 postContent">
           <img src={image1} className="postImage" alt="..." />
         </div>
         <div className="col-md-8">
-          <div className="card-body postBody">
+          <div className="card-body postBody" onClick={this.showPost}>
             <h5 className="card-title">{this.props.postData.title}</h5>
             <p className="card-text">{this.truncate(this.props.postData.body)}</p>
           </div>
@@ -55,11 +54,10 @@ class PostCard extends React.Component {
             </div>
             <div className="delete-btn">
             <p className="deleteBtn" onClick={() => {
-               this.props.deletePost(
-                 this.props.postData._id, 
-                 this.props.postData.city
-                )
-               }
+                this.props.deletePost(
+                this.props.postData._id, 
+                this.props.postData.city
+                )}
               }>DELETE
             </p>
             </div>
