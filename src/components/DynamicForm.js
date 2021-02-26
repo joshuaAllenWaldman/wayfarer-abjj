@@ -114,7 +114,7 @@ class DynamicForm extends React.Component {
                                 onChange={this.handleChange} 
                                 name="body" 
                                 id="body" 
-                                rows="3">
+                                rows="13">
                             </textarea>
                         </div>
                         <div class="col-auto">
@@ -151,7 +151,7 @@ class DynamicForm extends React.Component {
                             value={this.state.body} 
                             name="body" 
                             id="body" 
-                            rows="3">
+                            rows="13">
                         </textarea>
                     </div>
                     <div class="col-auto">

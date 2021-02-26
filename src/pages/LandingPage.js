@@ -36,7 +36,7 @@ const LandingPage = () => {
 
       <div className="container">
         <div className="heading">
-          <h1>Wayfarer is</h1>
+          <h1 className="wheading">Wayfarer is</h1>
         </div>
       </div>
 

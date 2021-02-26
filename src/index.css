@@ -136,6 +136,11 @@ a {
 /* ----------------------------
           LandingPage
 ------------------------------- */
+.wheading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color:#0C2C56;
+}
 
 .carousel-inner {
   max-height: 600px;
@@ -422,9 +427,10 @@ a {
 }
 
 .postTitle {
+  margin-bottom: .5rem;
+  color: #D50032;
   font-family: 'Poppins', sans-serif;
-  color:#D50032;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .postText {
