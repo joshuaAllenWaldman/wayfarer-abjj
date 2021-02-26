@@ -97,9 +97,9 @@ class CityShow extends React.Component {
                 id="main-city-image"
                 alt=""/>
               <div className="create-button">
-                <i onClick={this.showForm}
-                  className="fas fa-plus-circle"
-                  id="plusBtn"></i>
+              <div className="buttonHolder">
+                <i onClick={this.showForm} className="fas fa-plus-circle"id="plusBtn"></i>
+              </div>
               </div>
             </div>
           </div>
