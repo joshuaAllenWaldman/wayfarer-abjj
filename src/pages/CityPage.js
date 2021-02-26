@@ -27,8 +27,8 @@ class CityPage extends React.Component {
   }
 
   render() {
-    console.log('CityPage CityPage', this.state.currentCity)
-    return ( 
+    return (
+
       <>
         <div className="container-fluid cities">
             <CityShow 

@@ -21,13 +21,17 @@
   flex-direction: row;
   max-width: 100%;
   justify-content: space-between;
-  background: lightblue;
+  background: #0C2C56;
 }
 
 .wayfare-logo {
   padding: 20px 0 20px 50px;
   display: flex;
   justify-content: center;
+}
+
+#wayfarer-logo {
+  height: 70px;
 }
 
 .nav {
@@ -113,8 +117,18 @@ a {
   align-items: center;
 }
 
+.cityImg {
+  height: 200px;
+  width: 240px;
+}
+
 #city-card img {
+  height: 200px;
   width: 100%;
+}
+
+.cityName {
+  width: 400px;
 }
 
 #city-body {
@@ -164,7 +178,7 @@ a {
 
 .CitySubtitle {
   font-size: 30px;
-  padding-left: 60px;
+  padding-left: 65px;
   margin-top: -50px;
 }
 
@@ -204,6 +218,66 @@ a {
   padding-left: 60px;
 }
 
+.postContent {
+  height: 240px;
+  overflow: hidden;
+}
+
+.postImage {
+  height: 270px;
+}
+
+.postBody {
+  height: 150px;
+}
+
+.EDbtn {
+  display: flex;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.edit-btn {
+  height: 40px;
+  width: 150px;
+  background: #0C2C56;
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.editBtn {
+  margin-bottom: 0;
+  padding-top: 8px;
+}
+
+.edit-btn:hover {
+  background: #005C5C;
+  color: white;
+}
+
+.delete-btn {
+  height: 40px;
+  width: 150px;
+  border: 2px solid #0C2C56;
+  color: #0C2C56;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  margin-bottom: 0;
+  padding-top: 8px;
+}
+
+.delete-btn:hover {
+  background: #D50032;
+  color: white;
+}
+
 
 
 /* ----------------------------
@@ -211,7 +285,7 @@ a {
 ------------------------------- */
 
 footer {
-	background-color: lightblue;
+	background-color: #0C2C56;
   overflow: hidden;
 }
 
@@ -219,4 +293,5 @@ footer {
 	padding: 15px 0 3px;
 	padding: 1rem 0 .2rem;
   text-align: center;
+  color: #C4CED4;
 }

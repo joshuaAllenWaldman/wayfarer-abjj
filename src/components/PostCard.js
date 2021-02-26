@@ -36,18 +36,38 @@ class PostCard extends React.Component {
   }
 
   render() {
-    return (
-      <div className="card" >
-        <div className="title" onClick={this.showPost}>
-          <h4> {this.props.postData.title} </h4>
+  return (
+
+    <div className="card mb-3">
+      <div className="row g-0">
+        <div className="col-md-4 postContent">
+          <img src={image1} className="postImage" alt="..." />
         </div>
-        <div className="body" onClick={this.showPost}>
-          <p> {this.truncate(this.props.postData.body)} </p>
+        <div className="col-md-8">
+          <div className="card-body postBody">
+            <h5 className="card-title">{this.props.postData.title}</h5>
+            <p className="card-text">{this.truncate(this.props.postData.body)}</p>
+          </div>
+          <hr/>
+          <div className="EDbtn">
+            <div className="edit-btn" onClick={this.launchEdit}>
+            <p className="editBtn">EDIT</p>
+            </div>
+            <div className="delete-btn">
+            <p className="deleteBtn" onClick={() => {
+               this.props.deletePost(
+                 this.props.postData._id, 
+                 this.props.postData.city
+                )
+               }
+              }>DELETE
+            </p>
+            </div>
+          </div>
         </div>
-        <button onClick={this.launchEdit}>Edit</button>
-        <button onClick={() => {this.props.deletePost(this.props.postData._id, this.props.postData.city)}}>Delete!</button>
       </div>
-    )}
+    </div>
+  )}
 }
 
 export default PostCard;
