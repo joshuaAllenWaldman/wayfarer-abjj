@@ -12,7 +12,7 @@ class PostShow extends React.Component {
                     <div className="body">
                         <p> {this.props.postData.body} </p>
                     </div>
-                    <button onClick={this.props.closeForm}>Close</button>
+                    <button className="btn btn-primary" onClick={this.props.closeForm}>Close</button>
                     </div>
                 </div>
             </div>
