@@ -2,8 +2,7 @@ import React from 'react'
 import DynamicForm from './DynamicForm'
 import ReactDOM from 'react-dom'
 import PostShow from './PostShow'
-import image1 from '../images/wayfarer-logo.jpg'
-
+import image1 from '../images/wayfarer-logo-small.jpg'
 class PostCard extends React.Component {
   constructor() {
     super()
@@ -39,15 +38,15 @@ class PostCard extends React.Component {
   render() {
   return (
 
-    <div className="card mb-3">
+    <div className="card mb-3 post-content">
       <div className="row g-0">
-        <div className="col-md-4 postContent">
+        <div className="col-md-3">
           <img src={image1} className="postImage" alt="..." />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8 postContent">
           <div className="card-body postBody">
-            <h5 className="card-title">{this.props.postData.title}</h5>
-            <p className="card-text">{this.truncate(this.props.postData.body)}</p>
+            <h5 className="card-title postTitle">{this.props.postData.title}</h5>
+            <p className="card-text postText">{this.truncate(this.props.postData.body)}</p>
           </div>
           <hr/>
           <div className="EDbtn">

@@ -97,35 +97,88 @@ class DynamicForm extends React.Component {
         if (this.state.new) {
             return(
                 <div className="mymodal">
-                <div className="mymodalcontent">
-                    <h3>Create a New Post for {this.state.currentCity.name}</h3>
-                    <form onSubmit={this.handleSubmit}>
-                        <label htmlFor="title">Title</label> <br/>
-                        <input onChange={this.handleChange} type="text" id="title" name="title" /> <br/>
-                        <label htmlFor="body">Body</label> <br/>
-                        <textarea onChange={this.handleChange} name="body" id="body" cols="19" rows="5"></textarea>
-                        <br/>
-                        <button type="submit" >Submit</button>
-                        <button onClick={this.props.closeForm}>Close</button>
-
-                    </form>
-                </div></div>
+                    <div className="mymodalcontent">
+                    <h3 className="create-editTitle">Create a New Post for {this.state.currentCity.name}</h3>
+                        <form onSubmit={this.handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="title" className="form-label">Title</label>
+                            <input 
+                                type="text" 
+                                className="form-control" 
+                                id="title" 
+                                name="title" 
+                                placeholder="Where did you go?" 
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="body" className="form-label">Body</label>
+                            <textarea 
+                                className="form-control" 
+                                onChange={this.handleChange} 
+                                name="body" 
+                                id="body" 
+                                rows="3">
+                            </textarea>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" className="btn btn-primary mb-3 create-editBtn">Submit</button>
+                            <button onClick={this.props.closeForm} className="btn btn-primary mb-3 create-editClose">Close</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
             )
         } else {
             return(
                 <div className="mymodal">
                 <div className="mymodalcontent">
-                    <h3>Edit a Post on {this.state.currentCity.name}</h3>
+                <h3 className="create-editTitle">Edit Post on {this.state.currentCity.name}</h3>
                     <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="title">Title</label> <br/>
-                    <input onChange={this.handleChange} type="text" id="title" name="title" value={this.state.title}/> <br/>
-                    <label htmlFor="body">Body</label> <br/>
-                    <textarea onChange={this.handleChange} name="body" id="body" cols="19" rows="5" value={this.state.body}></textarea>
-                    <br/>
-                    <button type="submit" >Submit</button>
-                    <button onClick={this.props.closeForm}>Close</button>
-      </form>
-                </div></div>
+                    <div className="mb-3">
+                        <label htmlFor="title" className="form-label">Title</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="title"
+                            name="title"
+                            placeholder="Where did you go?" 
+                            onChange={this.handleChange} 
+                            value={this.state.title} 
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="body" className="form-label">Body</label>
+                        <textarea 
+                            className="form-control"
+                            onChange={this.handleChange}
+                            value={this.state.body} 
+                            name="body" 
+                            id="body" 
+                            rows="3">
+                        </textarea>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" className="btn btn-primary mb-3 create-editBtn">Submit</button>
+                        <button onClick={this.props.closeForm} className="btn btn-primary mb-3 create-editClose">Close</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+                // <div className="mymodal">
+                // <div className="mymodalcontent">
+                //     <h3>Edit a Post on {this.state.currentCity.name}</h3>
+                //     <form onSubmit={this.handleSubmit}>
+                //     <label htmlFor="title">Title</label> <br/>
+                //     <input onChange={this.handleChange} type="text" id="title" name="title" value={this.state.title}/> <br/>
+                //     <label htmlFor="body">Body</label> <br/>
+                //     <textarea onChange={this.handleChange} name="body" id="body" cols="19" rows="5" value={this.state.body}></textarea>
+                //     <br/>
+                //     <button type="submit" >Submit</button>
+                //     <button onClick={this.props.closeForm}>Close</button>
+                //     </form>
+                // </div></div>
             )
         }
     }

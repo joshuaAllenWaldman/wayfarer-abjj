@@ -41,8 +41,96 @@
 }
 
 a {
-  padding-right: 10px;
+  /* padding-right: 20px;
+  padding-left: 20px; */
   text-decoration: none;
+}
+
+.home {
+  color: #C4CED4;
+  height: 56px;
+  width: 120px;
+  padding: 13px 0 13px 0;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-weight: 400;
+  font-size: larger;
+}
+
+.home:hover {
+  background:#005C5C;
+  font-weight: 700;
+  font-size: larger;
+  color: white;
+}
+
+.divider {
+  border-left: 0.7px solid;
+  height: 30px;
+  color: #C4CED4;
+  margin-top: 12px;
+}
+
+.view-cities {
+  color: #C4CED4;
+  height: 50px;
+  width: 120px;
+  padding: 13px 0 13px 0;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-weight: 400;
+  font-size: larger;
+}
+
+.view-cities:hover {
+  background:#005C5C;
+  font-weight: 700;
+  font-size: larger;
+  color: white;
+}
+
+.log-in {
+  color: #C4CED4;
+  height: 50px;
+  width: 120px;
+  padding: 13px 0 13px 0;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-weight: 400;
+  font-size: larger;
+}
+
+.log-in:hover {
+  background:#005C5C;
+  font-weight: 700;
+  font-size: larger;
+  color: white;
+}
+
+.log-out {
+  color: #C4CED4;
+  height: 50px;
+  width: 120px;
+  padding: 13px 0 13px 0;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-weight: 400;
+  font-size: larger;
+}
+
+.log-out:hover {
+  background:#D50032;
+  font-weight: 700;
+  font-size: larger;
+  color: white;
 }
 
 /* ----------------------------
@@ -59,6 +147,24 @@ a {
   background: #777;
 }
 
+.topic-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color:#0C2C56;
+}
+
+.topicSub {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color:#C4CED4;
+}
+
+.topicText {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color:#0C2C56;
+}
+
 /* ----------------------------
           TOPIC.JS
 ------------------------------- */
@@ -66,7 +172,7 @@ a {
 .heading {
   display: flex;
   justify-content: center;
-  padding: 60px 0 30px 0;
+  padding: 60px 0 10px 0;
 }
 
 .card-topic {
@@ -95,26 +201,31 @@ a {
 
 #cities-container {
   /* height: 100vh; */
-  background: lightgray;
+  background: #C4CED4;
   padding-bottom: 50px;
 }
 
 .cities-card {
   display: flex;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 80px;
   padding-top: 30px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
+  font-family: 'Cormorant', serif;
+  font-weight: 700;
+  color: #0C2C56;
 }
 
 #city-container {
-  margin: 0 30px 0 30px;
+  margin: 0 30px 40px 30px;
   border-radius: 10px;
   overflow: hidden;
 }
 
 #city-card {
   align-items: center;
+  background: rgb(12, 44, 86);
+  cursor: pointer;
 }
 
 .cityImg {
@@ -136,13 +247,21 @@ a {
 }
 
 .city-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  /* text-transform: uppercase; */
+  color: white;
 }
 
 #city-card:hover {
-  background: lightskyblue;
-  color: darkblue;
+  background: #005C5C;
+  color: white;
 }
+
+/* ----------------------------
+          Dynamic Form
+------------------------------- */
 
 .mymodal {
   position: fixed;
@@ -163,6 +282,59 @@ a {
   width: 80%;
 }
 
+.create-editTitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #005C5C;
+}
+
+.form-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #005C5C;
+}
+
+.form-control {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.create-editBtn {
+  border-radius: 30px;
+  height: 43px;
+  width: 210px;
+  margin-right: 40px;
+  background: #0C2C56;
+  border-color: #0C2C56;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.create-editBtn:hover {
+  background: #005C5C;
+  border-color: #005C5C;
+  font-weight: 600px;
+}
+
+.create-editClose {
+  border-radius: 30px;
+  height: 43px;
+  width: 210px;
+  margin-right: 40px;
+  background: none;
+  color: #0C2C56;
+  border-color: #0C2C56;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.create-editClose:hover {
+  background: #D50032;
+  border-color: #0C2C56;
+  font-weight: 600px;
+}
+
 /* ----------------------------
     CityPage / Cities Column
 ------------------------------- */
@@ -172,14 +344,20 @@ a {
 }
 
 .CityName {
-  font-size: 90px;
+  font-size: 80px;
   padding-left: 60px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #D50032;
 }
 
 .CitySubtitle {
   font-size: 30px;
   padding-left: 65px;
   margin-top: -50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #005C5C;
 }
 
 .city-image {
@@ -213,28 +391,51 @@ a {
         POST Container
 ------------------------------- */
 
+.posts {
+  font-family: 'Cormorant', serif;
+  font-size: 60px;
+  font-weight: 700;
+  color: #0C2C56;
+}
+
 .post-container {
   width: 97%;
   padding-left: 60px;
 }
 
 .postContent {
-  height: 240px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
+
+.postTitle {
+  font-family: 'Poppins', sans-serif;
+  color:#D50032;
+  font-weight: 700;
+}
+
+.postText {
+  font-family: 'Poppins', sans-serif;
+  color: #0C2C56;
+}
+
+/* .post-content {
+  height: 271px;
+} */
 
 .postImage {
-  height: 270px;
+  height: 210px;
 }
 
-.postBody {
+/* .postBody {
   height: 150px;
-}
+} */
 
 .EDbtn {
   display: flex;
   padding-left: 20px;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .edit-btn {
@@ -294,4 +495,5 @@ footer {
 	padding: 1rem 0 .2rem;
   text-align: center;
   color: #C4CED4;
+  font-family: 'Cormorant', serif;
 }

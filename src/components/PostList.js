@@ -19,7 +19,7 @@ const PostList = (props) => {
 
   return (
     <>
-      <h3>Posts</h3>
+      <span className="posts">Posts</span>
       { sortedPosts }
     </>
   )
