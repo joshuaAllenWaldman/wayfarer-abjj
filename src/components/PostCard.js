@@ -55,11 +55,10 @@ class PostCard extends React.Component {
             </div>
             <div className="delete-btn">
             <p className="deleteBtn" onClick={() => {
-               this.props.deletePost(
-                 this.props.postData._id, 
-                 this.props.postData.city
-                )
-               }
+                this.props.deletePost(
+                this.props.postData._id, 
+                this.props.postData.city
+                )}
               }>DELETE
             </p>
             </div>
