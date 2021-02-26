@@ -44,7 +44,7 @@ class PostCard extends React.Component {
           <img src={image1} className="postImage" alt="..." />
         </div>
         <div className="col-md-8 postContent">
-          <div className="card-body postBody">
+          <div className="card-body postBody" onClick={this.showPost}>
             <h5 className="card-title postTitle">{this.props.postData.title}</h5>
             <p className="card-text postText">{this.truncate(this.props.postData.body)}</p>
           </div>
