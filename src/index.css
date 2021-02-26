@@ -415,8 +415,10 @@ a {
 }
 
 .postContent {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  max-width: 210px;
+  margin-right: 150px;
 }
 
 .postTitle {

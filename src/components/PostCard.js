@@ -3,6 +3,7 @@ import DynamicForm from './DynamicForm'
 import ReactDOM from 'react-dom'
 import PostShow from './PostShow'
 import image1 from '../images/wayfarer-logo-small.jpg'
+
 class PostCard extends React.Component {
   constructor() {
     super()
