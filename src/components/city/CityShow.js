@@ -1,8 +1,8 @@
 import React from 'react';
-import PostList from './PostList'
+import PostList from '../post/PostList'
 import CityList from './CityList';
 import ReactDOM from 'react-dom'
-import DynamicForm from './DynamicForm'
+import DynamicForm from '../DynamicForm'
 
 class CityShow extends React.Component {
   constructor() {

@@ -1,6 +1,6 @@
 import React from 'react';
 // import image1 from '../images/london.jpg';
-import CityShow from '../components/CityShow';
+import CityShow from '../components/city/CityShow';
 
 class CityPage extends React.Component {
   state = {
